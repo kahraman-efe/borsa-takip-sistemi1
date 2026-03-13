@@ -1,0 +1,33 @@
+name: Borsa Takip
+
+on:
+  schedule:
+    - cron: '0 6 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  takip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Python kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Kutuphaneleri kur
+        run: pip install yfinance groq
+
+      - name: Calistir
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python borsa.py
+
+      - name: Sonuclari kaydet
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add sonuclar.json
+          git commit -m "Borsa guncellendi $(date)" || echo "Degisiklik yok"
+          git push
