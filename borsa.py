@@ -37,4 +37,5 @@ def borsa_asistan(soru):
         messages=[{"role": "user", "content": mesaj}]
     )
     return yanit.choices[0].message.content   
-print(borsa_asistan("THYAO nasil?"))
+print(borsa_asistan("KTLEV NASIL??"))
+print(borsa_asistan("TUPRS NASIL??"))
