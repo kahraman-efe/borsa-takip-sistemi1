@@ -36,5 +36,5 @@ def borsa_asistan(soru):
         model="openai/gpt-oss-120b",
         messages=[{"role": "user", "content": mesaj}]
     )
-    return yanit.choices[0].message.content
-    print(borsa_asistan("THYAO nasil?"))
+    return yanit.choices[0].message.content   
+print(borsa_asistan("THYAO nasil?"))
