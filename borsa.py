@@ -1,4 +1,4 @@
-!pip install yfinance groq
+
 import yfinance as yf
 from datetime import datetime
 
